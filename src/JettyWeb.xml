@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
+   metadata-complete="true" version="2.5">
+  <description>Jetty Web App Config</description>
+
+	<listener>
+		<listener-class>com.cProc.CDR.Data.ContextListener</listener-class>
+	</listener>
+  <servlet>
+    <servlet-name>default</servlet-name>
+    <servlet-class>org.mortbay.jetty.servlet.DefaultServlet</servlet-class>
+    <init-param>
+      <param-name>acceptRanges</param-name>
+      <param-value>true</param-value>
+    </init-param>
+    <init-param>
+      <param-name>dirAllowed</param-name>
+      <param-value>true</param-value>
+    </init-param>
+    <init-param>
+      <param-name>welcomeServlets</param-name>
+      <param-value>false</param-value>
+    </init-param>
+    <init-param>
+      <param-name>redirectWelcome</param-name>
+      <param-value>false</param-value>
+    </init-param>
+    <init-param>
+      <param-name>maxCacheSize</param-name>
+      <param-value>256000000</param-value>
+    </init-param>
+    <init-param>
+      <param-name>maxCachedFileSize</param-name>
+      <param-value>10000000</param-value>
+    </init-param>
+    <init-param>
+      <param-name>maxCachedFiles</param-name>
+      <param-value>1000</param-value>
+    </init-param>
+    <init-param>
+      <param-name>cacheType</param-name>
+      <param-value>both</param-value>
+    </init-param>
+    <init-param>
+      <param-name>gzip</param-name>
+      <param-value>true</param-value>
+    </init-param>
+    <init-param>
+      <param-name>useFileMappedBuffer</param-name>
+      <param-value>true</param-value>
+    </init-param>
+    <load-on-startup>0</load-on-startup>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>KeyServlet</servlet-name>
+    <servlet-class>com.cProc.CDR.action.KeyServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>KeyServlet</servlet-name>
+    <url-pattern>/KeyServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>JobServlet</servlet-name>
+    <servlet-class>com.cProc.CDR.action.JobServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>JobServlet_BJ</servlet-name>
+    <url-pattern>/JobServlet_BJ</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>JobServlet_BJ</servlet-name>
+    <servlet-class>com.cProc.CDR.action.JobServlet_BJ</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>JobServlet</servlet-name>
+    <url-pattern>/JobServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+  
+  <session-config>
+    <session-timeout>30</session-timeout>
+  </session-config>
+
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  
+</web-app>
